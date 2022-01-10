@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ColorChange : MonoBehaviour
 {
+
+   
     public void Red(){
         GetComponent<Renderer>().material.color = Color.red; 
     }

@@ -5,23 +5,26 @@ using UnityEngine;
 
 public class Grap : MonoBehaviour
 {
-   // private GameObject cube;
+  
     public GameObject Hands;
     public GameObject Weapons;
-    bool CanGrap = true;
     bool inHands = false;
-    Vector3 ballPos;
+    Vector3 weaponPos;
     Quaternion wRotation;
+    
+    
  
-    //string name = "none";
+   
     // Start is called before the first frame update
     void Start()
     {
         
-        ballPos = this.transform.position;
+        weaponPos = this.transform.position;
         wRotation = this.transform.rotation;
-        // Update is called once per frame
+      
+      
     }
+    // Update is called once per frame
     void Update()
         {
 
@@ -36,7 +39,8 @@ public class Grap : MonoBehaviour
                
                     this.transform.SetParent(Hands.transform);
                     this.transform.localPosition = new Vector3(0.173f, -.293f, 0.278f);
-                this.transform.rotation = Quaternion.Euler(10,90,0);
+                this.transform.rotation = Quaternion.Euler(7,90,0);
+               
                     inHands = true;
                 
 
@@ -44,9 +48,10 @@ public class Grap : MonoBehaviour
 
                 else if (inHands  )
                 {
+              
                     this.GetComponent<Grap>().enabled = false;
                     this.transform.SetParent(Weapons.transform);
-                    this.transform.localPosition = ballPos;
+                    this.transform.localPosition = weaponPos;
                 this.transform.rotation = wRotation;
 
                     inHands = false;
@@ -54,14 +59,7 @@ public class Grap : MonoBehaviour
             }
 
 
-        if (this.transform.parent == Hands.transform)
-        {
-            GetComponent<Renderer>().material.color = Color.cyan;
-        }
-        else
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
+       
         }
     
 }
